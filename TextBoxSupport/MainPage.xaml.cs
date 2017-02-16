@@ -108,15 +108,19 @@ namespace TextBoxSupport
 
         private void TextBox_KeyDown(object sender, KeyRoutedEventArgs e)
         {
-            var number = e.KeyStatus.ScanCode; 
-            if (number>= 71 && number<= 82&& number != 74&& number!=78)
-            {
-                // the NumPad is pressed
-            }
-            else
-            {
-                e.Handled = true;
-            }
+            //var number = e.KeyStatus.ScanCode; 
+            //if (number>= 71 && number<= 82&& number != 74&& number!=78)
+            //{
+            //    // the NumPad is pressed
+            //}
+            //else
+            //{
+            //    e.Handled = true;
+            //}
+
+            if (System.Text.RegularExpressions.Regex.IsMatch(e.Key.ToString(), "[0-9]"))
+                e.Handled = false;
+            else e.Handled = true;
         }
 
         //private void TextBox_KeyUp(object sender, KeyRoutedEventArgs e)
